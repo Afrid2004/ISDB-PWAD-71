@@ -62,12 +62,31 @@
                 this.price=price_vlaue;
                 this.max_speed=max_speed_vlaue;
             }
+            // abstruction
+            engineStart(){
+                 this.spark();
+                 this.injectfuel();
+                 this.piston();
+
+                 console.log("Engin Started");
+            }
+
+            spark(){
+               console.log("spark");
+            }
+            injectfuel(){
+                console.log("fuel injection");
+            }
+            piston(){
+                 console.log("turn on piston");
+            }
         }
         let Toyota1= new Car("Toyota", 2015, 600000, 300);
         let BMW1= new Car("BMW", 2015, 600000, 300);
         console.log(Toyota1.price);
         console.log(BMW1);
         console.log(Toyota.price);
+        Toyota1.engineStart();
         
 
        class Animal{
@@ -113,19 +132,40 @@
                 this.owner_name= owner_name;  
           }
          // polymorphism  overriding parents mehtod
+         // abstruction
           speak(){
-              return ` ${this.name}  barks in evening.`;
+              return this.vocalcord();
+          }
+
+          vocalcord(){
+             return  ` ${this.name}  barks in evening.`;
           }
 
           walk(){
               return `${this.name} walks in park 7`
           }
+
+         // encapsulation
+         setName(name){
+           this.name= name;
+         }
+
+         getName(){
+            return this.name;
+         }
+
       }
    
- 
       let dog= new Pet("Mark", 6, "Land", true, "Rashed");
-
       console.log(dog.walk() , dog.speak());
+      dog.setName("Bulldog");
+      console.log(dog.getName());
+      
+
+
+
+    
+
       
         
     </script>

@@ -64,12 +64,12 @@
 
         let khalid = new PersonBluprint("khalid", "Hasan", 22, true);
 
-          khalid.fullName();
-          person2.fullName();
-          masud.fullName();
+        //   khalid.fullName();
+        //   person2.fullName();
+        //   masud.fullName();
         
-          console.log(khalid);
-          console.log(jayed);
+        //   console.log(khalid);
+        //   console.log(jayed);
           
 
         // person.gender="Male";
@@ -95,11 +95,6 @@
         // 4 delete a property 
         // 5 use Object.keys, Object.values , Object.entries
         // 6 use for in loop
-
-
-
-
-
 
 
 
@@ -133,17 +128,35 @@
         // ];
 
 
+      let person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 26,
+            isStudent: true,
+            hobbies:["read","play"],
+            address:{
+                city:"Dhaka",
+                road:"Sat Masjid Road",
+                area: "Dhanmondhi"
+            },
+            fullname: function fullname1(){
+               return this.firstName +" "+ this.lastName;
+            }
+        };
+
+
+
         // // 2. Accessing object properties
         // console.log("First Name:", person.firstName);
         // console.log("City:", person.address.city);
-        // console.log("First Hobby:", person.hobbies[0]);
+        // console.log("second Hobby:", person.hobbies[1]);
 
         // // 3. Calling a method inside an object
-        // console.log("Full Name:", person.fullName());
+        // console.log("Full Name:", person.fullname());
 
         // // 4. Modifying object properties
-        // person.age = 26;
-        // console.log("Updated Age:", person.age);
+        // person.age = 30;
+        // console.log("Updated Age:", person);
 
         // 5. Adding a new property
         // person.email = "john.doe@example.com";
@@ -157,9 +170,14 @@
         // console.log("After Deleting isStudent:", person);
 
         // 7. Looping through object keys
-        // console.log("Looping through properties:");
+       // console.log("Looping through properties:");
         // for (let key in person) {
         //     console.log(key + ":", person[key]);
+        // }
+
+        // for(let a in person){
+        //    console.log( `${a}: ${person[a]}` );
+           
         // }
 
         // // 8. Object.keys, Object.values, Object.entries
@@ -181,7 +199,7 @@
 
         // const student2 ={...student, name:"Khalid"}
 
-        // // console.log("Student Object:", student);
+        // // // console.log("Student Object:", student);
         //  student.greet();
         //  student2.greet();
 
