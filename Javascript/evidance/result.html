@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <input id="number" type="text">
+      <button onclick="result()" >submit</button>
+      <div id="result"></div>
+    <script>
+
+     function result(){
+      let number=  Number(document.querySelector("#number").value);
+      let result= "";
+
+      if(number  >= 80 ){
+        result = "A+";
+      }else if(number>= 70){
+        result = "A";
+      }else if(number>= 60){
+        result = "A-";
+      }else{
+        result = "Fail";
+      }
+
+     document.querySelector("#result").innerHTML= `<h1>${result}</h1>`; 
+
+
+     }
+
+
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

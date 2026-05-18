@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        // let number= 9;
+        //           2,3,4,5,6
+
+     function isPrime(number){
+        if(number <= 1){
+          document.write(`<h1>${number} is not a prime number</h1>`) ;
+          return ;
+        } 
+        for(let i = 2; i < number; i++ ){ 
+            
+             if(number % i == 0){
+                document.write(`<h1>${number} is not a prime number</h1>`);
+                return;  
+             }
+        }
+        document.write(`<h1>${number} is  a prime number</h1>`); 
+        return ;
+      }
+
+      isPrime( Number(prompt("input a number ")) );
+    </script>
+</body>
+</html>
