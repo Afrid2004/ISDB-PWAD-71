@@ -15,10 +15,14 @@
              <label for="age">age</label>
              <input type="text" name="age" id="my_age">
          </div>
+         <div>
+             <label for="phone">Phone</label>
+             <input type="text" name="phone" id="phone" onblur="validatePhone()">
+         </div>
 
          <div>
              <label for="email">email</label>
-             <input type="text" name="email" id="my_email">
+             <input type="text" name="email" id="my_email" onblur="emailValidation()">
          </div>
          <div>
              <label for="address">address</label>
@@ -54,6 +58,35 @@
                document.getElementById("my_address").value="";
                
             }
+
+
+            function emailValidation(){
+              let pattern= /^(?!\d)(?!_)[a-z0-9_]{4,}[@][a-z]{3,}[.][a-z]{2,}$/;
+              let email=document.getElementById("my_email").value;
+              if(pattern.test( email)){
+                console.log("valid email");
+              }else{
+                 console.log("Invalid email");
+              }
+            }
+            // +880 1912 978598;
+            function validatePhone(){
+                let pattern= /^\+880[0-9]{4}-?[\d]{6}$/;
+                let phone=document.getElementById("phone").value;
+                if(pattern.test( phone)){
+                console.log("valid phone");
+              }else{
+                 console.log("Invalid phone");
+              }
+            }
+
+            
       </script>
 </body>
 </html>
+
+
+1. Grade system 
+2. prime number 
+3. factorial
+4. max number among 3 using nested if 
