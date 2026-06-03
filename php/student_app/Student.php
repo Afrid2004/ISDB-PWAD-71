@@ -80,7 +80,7 @@ class Student
       foreach ($students as $key => $student) {
          list($sid) = explode(",", $student);
          if ($sid != $_id) {
-            $data .= $student;
+            $data .= $student.PHP_EOL;
          }
       }
       file_put_contents("students_data.txt", $data);
