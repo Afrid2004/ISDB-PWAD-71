@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="f" name="f" style="width: 400px; margin: 0 auto;">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" onblur="nameValidation()" />
+            <span id="nameMessage"></span>
+
+        </div>
+        <div>
+            <label for="name">Password</label>
+            <input type="password" id="password" name="password" onblur="passvalidation()" />
+            <span style="cursor: pointer;" onclick="showPassword()">&#x1F441;</span>
+            <span id="passwordMessage"></span>
+
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" onblur="emailValidation()" />
+            <span id="emailMessage"></span>
+        </div>
+        <div>
+            <label for="city">City</label>
+            <select name="city" id="city">
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Rajshahi">Rajshahi</option>
+                <option value="Barishal">Barishal</option>
+            </select>
+        </div>
+        <div class="checkbox">
+            <label for="">Gender</label>
+            <label for="Male">
+                Male
+                <input type="radio" id="Male" name="gender" value="Male" checked />
+            </label>
+            <label for="Female">
+                Female
+                <input type="radio" id="Female" name="gender" value="Female" />
+            </label>
+        </div>
+
+        <div class="checkbox">
+            <label for="Bangla">
+                Bangla
+                <input type="checkbox" id="Bangla" name="subject" value="Bangla" />
+            </label>
+            <label for="English">
+                English
+                <input type="checkbox" id="English" name="subject" value="English" />
+            </label>
+            <label for="Math">
+                Math
+                <input type="checkbox" id="Math" name="subject" value="Math" />
+            </label>
+            <label for="ICT">
+                ICT
+                <input type="checkbox" id="ICT" name="subject" value="ICT" />
+            </label>
+        </div>
+        <div>
+            <label for="comment">Comment</label>
+            <textarea id="comment" name="comment"></textarea>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+
+
+    <script>
+        function nameValidation() {
+            let name = document.getElementById("name");
+            let nameMessage = document.getElementById("nameMessage");
+            let pattern = /^[a-zA-Z ]{4,}$/;
+            if (pattern.test(name.value)) {
+                nameMessage.innerText = "valid name";
+                nameMessage.style.color = "green"
+            } else {
+                nameMessage.innerText = "invalid name";
+                nameMessage.style.color = "red"
+            }
+
+        }
+        function emailValidation() {
+            let email = document.getElementById("email");
+            let emailMessage = document.getElementById("emailMessage");
+            let pattern = /^[a-z0-9_]{3,}[@][a-z]{3,}[.][a-z]{2,}$/;
+
+            if (pattern.test(email.value)) {
+                emailMessage.innerText = "Valid Email";
+            } else {
+                emailMessage.innerText = "Invalid Email";
+            }
+        }
+
+        function passvalidation(){
+            let password = document.getElementById("password");
+            let pattern=/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&*!]).{8,}$/;
+            if (pattern.test(password.value)) {
+                 console.log("valid password");
+            }else{
+                console.log("invalid password");
+            }
+        }
+         function showPassword() {
+            let password = document.getElementById("password");
+            if (password.type === "password") {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        }
+
+
+
+        let form = document.getElementById("f");
+        console.log(form);
+        form.onsubmit = function (e) {
+            e.preventDefault()
+            let name = form.name.value;
+            let email = form.email.value;
+            let city = form.city.value;
+            let comment = form.comment.value;
+
+            let gender = form.gender
+            let subjects = form.subject
+
+            let selectedGender = "";
+            let selectedSubject = "";
+            for (s of subjects) {
+                if (s.checked) {
+                    selectedSubject += s.value + ",";
+                }
+            }
+            for (g of gender) {
+                if (g.checked) {
+                    selectedGender = g.value;
+                }
+            }
+            let w = window.open("", "_blank", "width=400,height=400");
+            w.document.write(`
+            <div>
+                <h3>Name: ${name}</h3>
+                <p>Email: ${email}</p>
+                <p>City: ${city}</p>
+                <p>Gender: ${selectedGender}</p>
+                <p>Subject: ${selectedSubject}</p>
+                <p>Comment: ${comment}</p>
+            </div>
+            <div>
+                <button onclick="self.close()">close</button>
+                <button onclick="print()">print</button>
+            </div>
+          `);
+
+
+
+
+
+        }
+
+       
+    </script>
+</body>
+
+</html>
