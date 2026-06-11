@@ -1,11 +1,11 @@
 <?php 
-
+  include_once "db_config.php";
   include_once("Student.php");
 
   $errors=[];
   if(isset($_POST['btn_submit'])){
 
-     $id= $_POST["id"];
+     $id= 1;
      $name= $_POST["name"];
      $email= $_POST["email"];
      $gender= $_POST["gender"];
@@ -13,8 +13,8 @@
 
    //   print_r($_POST);
 
-     if($id == ""){
-      $errors["id"]= "Id must have given value";
+     if($name == ""){
+      $errors["name"]= "name must have given value";
      }
 
      if(!count($errors)){
@@ -63,11 +63,11 @@
         <a class="btn btn-primary" href="index.php">Manage Student</a>
     
     <form action="" method="post">
-       <div>
+       <!-- <div>
          <label class="form-label" for="id">ID</label> <br>
           <input class="form-control" type="text" name="id" id="id">
-          <span style="color:red"><?php echo isset($errors["id"]) ? "{$errors["id"]}":"" ?> </span> 
-       </div>
+          <span style="color:red"><?php //echo isset($errors["id"]) ? "{$errors["id"]}":"" ?> </span> 
+       </div> -->
        <div>
          <label  class="form-label"for="name">Name</label> <br>
           <input class="form-control" type="text" name="name" id="">

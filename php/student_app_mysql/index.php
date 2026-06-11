@@ -5,17 +5,14 @@ session_start();
    header("location:login.php");
  }
 
-
-
-
-
+require_once "db_config.php";
 include_once("Student.php");
 
 // print_r($_SESSION);
 $data=[];
 if(isset($_GET["btn_submit"])){
     $id= $_GET["sid"];
-    $data = Student::find($id) ?? []; 
+    $founddata = Student::find($id) ?? []; 
 }
 
 if(isset($_GET["deleteid"])){
@@ -62,21 +59,18 @@ if(isset($_GET["deleteid"])){
                     <tbody>
                      <?php
                       $students= Student::all();
-                     
-                      foreach($students as $student){
-                       list($id, $name,$email,$gender,$mobile)= explode(",", $student);
-
+                      foreach($students as $row){
                        echo "
                        
                         <tr>
-                             <td>$id</td>
-                             <td>$name</td>
-                             <td>$email</td>
-                             <td>$gender</td>
-                             <td>$mobile</td>
+                             <td>$row->id</td>
+                             <td>$row->name</td>
+                             <td>$row->email</td>
+                             <td>$row->gender</td>
+                             <td>$row->mobile</td>
                              <td>
-                                <a class='btn btn-info' href='update.php?id=$id'>Edit</a>
-                                <a onclick='return confirm(`are you sure`)' class='btn btn-danger' href='index.php?deleteid=$id'>Delete</a>
+                                <a class='btn btn-info' href='update.php?id=$row->id'>Edit</a>
+                                <a onclick='return confirm(`are you sure`)' class='btn btn-danger' href='index.php?deleteid=$row->id'>Delete</a>
                              </td>
                          </tr>
                        
@@ -105,27 +99,27 @@ if(isset($_GET["deleteid"])){
                  </form>
 
                
-                  <?php echo  count($data) > 0 ? "" :"Data Not found" ?>
+                  <?php echo  is_object($founddata) > 0 ? "" :"Data Not found" ?>
                   <table class="table">
                       <tr> 
                          <th>ID</th>
-                         <th> <?php echo  $data["sid"]?? "" ?></th>
+                         <th> <?php echo $founddata->id?? "" ?></th>
                       </tr>
                       <tr> 
                          <th>Name</th>
-                         <th><?php echo  $data["name"]?? "" ?></th>
+                         <th><?php echo  $founddata->name?? "" ?></th>
                       </tr>
                       <tr> 
                          <th>Email</th>
-                         <th><?php echo  $data["email"]?? "" ?></th>
+                         <th><?php echo $founddata->email?? "" ?></th>
                       </tr>
                       <tr> 
                          <th>Gender</th>
-                         <th><?php echo  $data["gender"]?? "" ?></th>
+                         <th><?php echo  $founddata->gender?? "" ?></th>
                       </tr>
                       <tr> 
                          <th>Phone</th>
-                         <th><?php echo  $data["mobile"]?? "" ?></th>
+                         <th><?php echo  $founddata->mobile?? "" ?></th>
                       </tr>
                   </table>
              </div>

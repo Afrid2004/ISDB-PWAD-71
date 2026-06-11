@@ -8,6 +8,7 @@ class Student
    public $gender;
    public $mobile;
 
+
    public function __construct($_id, $_name, $_email, $_gender, $_mobile)
    {
       $this->id = trim($_id);
@@ -20,53 +21,46 @@ class Student
 
    function save()
    {
-
-      $data = "$this->id,$this->name,$this->email,$this->gender,$this->mobile".PHP_EOL;
-      file_put_contents("students_data.txt", $data, FILE_APPEND);
+      global $db;
+      $stmt= $db->query("insert into students(name,email,gender,mobile)
+                        values('$this->name', '$this->email', '$this->gender', '$this->mobile')");
       return "Saved successfully";
    }
 
    static function find($_id)
    {
+      global $db;
+      $data = $db->query("select * from students where id= $_id");
+      $student = $data->fetch_object();
 
-      $data = file("students_data.txt");
-      $result = [];
-
-      foreach ($data as $key => $value) {
-         list($sid, $name, $email, $gender, $mobile) = explode(",", $value);
-         if ($sid == $_id) {
-            $result = compact("sid",  "name", "email", "gender", "mobile");
-         }
-      }
-      if(count($result)){
-        return  $result;
-      }
-      return  $result;
+      
+      return $student;
    }
 
    static function all()
    {
-      $data = file("students_data.txt",FILE_SKIP_EMPTY_LINES|FILE_IGNORE_NEW_LINES);
-      return  $data;
+      global $db;
+      $studentData=[];
+      $stmt= $db->query("select * from students");
+      $data= $stmt->fetch_all(MYSQLI_ASSOC);
+
+      foreach($data as $value){
+          array_push( $studentData ,  (object) $value)  ;
+      }
+      return $studentData;
    }
 
 
    function update()
    {
-      $students = $this->getData();
-      $data = "";
+       global $db;
 
-      foreach ($students as $student) {
-         list($id) = explode(",", $student);
-
-         if ($id == $this->id) {
-            $data .= "$this->id,$this->name,$this->email,$this->gender,$this->mobile" . PHP_EOL;
-         } else {
-            $data .= $student.PHP_EOL;
-         }
-      }
-
-      file_put_contents("students_data.txt", $data);
+       $stmt= $db->query("update students set 
+                          name='$this->name',
+                          email='$this->email',
+                          gender='$this->gender',
+                          mobile='$this->mobile' where id = $this->id
+                        ");
 
 
       return "updated successfully";
@@ -74,16 +68,8 @@ class Student
 
    static function delete($_id)
    {
-      $students = file("students_data.txt",FILE_SKIP_EMPTY_LINES|FILE_IGNORE_NEW_LINES);
-      $data = "";
-
-      foreach ($students as $key => $student) {
-         list($sid) = explode(",", $student);
-         if ($sid != $_id) {
-            $data .= $student.PHP_EOL;
-         }
-      }
-      file_put_contents("students_data.txt", $data);
+      global $db;
+      $stmt=$db->query("delete from students where id=$_id");
       return   "Deleted succesfully";
    }
 
