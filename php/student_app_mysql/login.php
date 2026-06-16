@@ -2,9 +2,8 @@
 session_start();
 require_once "db_config.php";
 
-$ip = gethostbyname("www.google.com");
-
-echo $ip;
+// $ip = gethostbyname("www.google.com");
+// echo $ip;
 
 $error = "";
 if (isset($_POST["btn_submit"])) {

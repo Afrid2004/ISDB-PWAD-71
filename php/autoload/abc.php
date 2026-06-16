@@ -1,21 +1,14 @@
 <?php 
-
-
- spl_autoload_register("ClassName");
-
- function ClassName($class){
-    // print_r($class);
-    include_once "classes\\$class.php";
- }
-
+require_once "vendor/autoload.php";
+use classes\Lichi;
 //  include_once "classes/Lichi.php";
 //  include_once "classes/Mango.php";
 
- $lichi= new Lichi();
- $mango = new Mango();
+ $lichi= new Lichi;
 
 
 
+// composer  dump-autoload
 
 
 

@@ -1,7 +1,11 @@
 <?php 
 namespace Classes\Finance;
-class Employee{
-  
+use Classes\Model\BaseModel;
+
+class Employee extends BaseModel{
+   
+   static $table= "employees";
+
    public function __construct()
    {
      echo "This is Employee Class";
