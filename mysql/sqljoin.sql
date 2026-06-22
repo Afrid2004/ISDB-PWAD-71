@@ -213,3 +213,7 @@ left join roles on users.role_id = roles.id
 union
 select users.id , users.name ,roles.name from users
 right join roles on users.role_id = roles.id;
+
+
+SELECT *  FROM users  CROSS JOIN roles;
+SELECT * FROM users JOIN roles  using(role_id);
