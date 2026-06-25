@@ -155,3 +155,29 @@ if(isset($_POST["btn_submit"])){
        </form>
 </body>
 </html>
+
+<!-- Trigger view and procedure Practice Questions              Total 50 marks
+Q1. Create Two Tables (5 Marks)
+Create the following two tables:
+
+ 
+Departments
+- id (AUTO_INCREMENT, PRIMARY KEY)
+- name (VARCHAR(50))
+- location (VARCHAR(100))
+- phone (VARCHAR(20))
+
+Employees
+- id (AUTO_INCREMENT, PRIMARY KEY)
+- name (VARCHAR(50))
+- salary (INT)
+- department_id (INT) 
+
+Q2. Insert Data Using Stored Procedure (15 Marks)
+Create an HTML form and write a PHP script to insert data into the Department table using a Stored Procedure.
+Q3. Create Trigger (15 Marks)
+Create an AFTER DELETE Trigger on the Department table.
+
+When a department is deleted, all employees belonging to that department should also be deleted automatically from the Employee table.
+Q4. Create View and Display Data (15 Marks)
+Create a View named high_salary_employees that displays all employees whose salary is greater than 50000. -->
