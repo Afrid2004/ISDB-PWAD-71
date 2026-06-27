@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
 
 include_once "db_config.php";
 
-
 $path=  isset($_GET["path"])? explode("/", trim($_GET["path"], "/"))     :[];
 // print_r($path);
 

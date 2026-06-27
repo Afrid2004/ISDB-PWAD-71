@@ -8,8 +8,7 @@ function response(array $data , $status=200){
    echo json_encode($data);
 }
 
-
+ //  https://stackoverflow.com/questions/13170819/what-is-htaccess-file 
 
 ?>
 
-<!-- https://stackoverflow.com/questions/13170819/what-is-htaccess-file -->
