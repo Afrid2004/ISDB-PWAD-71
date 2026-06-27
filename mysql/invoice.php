@@ -2,14 +2,16 @@
 <?php  
    $db= new mysqli("localhost", "root", "", "school");
 
-
+   
+   
+   $id= $_GET['id'] ?? 1;
    $stmtcompany_info= $db->query("select * from company order by id limit 1");
    $company=$stmtcompany_info->fetch_object();
    
    $stmtorder= $db->query("select orders.*, customers.name, customers.email,  customers.phone , customers.road 
    , customers.districts, customers.country
    from orders 
-   join customers on orders.customer_id= customers.id");
+   join customers on orders.customer_id= customers.id where orders.id=$id");
    $order= $stmtorder->fetch_object();
 
     print_r($order);
