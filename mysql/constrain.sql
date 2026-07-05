@@ -14,8 +14,6 @@ CREATE TABLE posts (
   price DECIMAL(10,2) DEFAULT 0.00,
   CONSTRAINT fk_posts_user FOREIGN KEY (user_id) REFERENCES users(id)
     
-    
-    
     ON DELETE SET NULL
     ON UPDATE CASCADE,
 
@@ -47,7 +45,7 @@ Constraint	      Purpose
 PRIMARY KEY	      Uniquely identifies each row
 FOREIGN KEY	      Links rows between tables
 UNIQUE	          No duplicate values allowed
-NOT NULL	      Value cannot be NULL
-CHECK	          Must satisfy condition (≥ MySQL 8.0.16)
+NOT NULL	        Value cannot be NULL
+CHECK	            Must satisfy condition (≥ MySQL 8.0.16)
 DEFAULT	          Assigns default value
 AUTO_INCREMENT	  Auto-generated sequential values

@@ -19,14 +19,28 @@
   </thead>
   <tbody>
 
-
+   <?php 
+   
+     foreach ($data as $key => $value) {
+       echo "
+       
+         <tr>
+          <th >1</th>
+          <td>$value->name</td>
+          <td>$value->unit_price</td>
+          <td>$value->purchase_price</td>
+          <td><img width='50' src='$base_url/img/products/$value->photo' alt='' srcset=''> </td>
+       
+         </tr>
+       
+       
+       
+       ";
+     }
+   
+   ?>
   
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    
+  
+  
   </tbody>
 </table>

@@ -352,14 +352,17 @@ function view($path = "", $data = [])
             $method = "index";
         }
     }
+    if(is_array($data)){
 
+        extract($data);
+    }
     $vars = get_defined_vars();
 
     $class = isset($_GET["class"]) ? $_GET["class"] : "home";
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
     //${strtolower($class)} = (object) $data;
     $bag = $data;
-    extract( $data);
+
     ${strtolower($class)} = json_decode(json_encode($data), FALSE);
 
 

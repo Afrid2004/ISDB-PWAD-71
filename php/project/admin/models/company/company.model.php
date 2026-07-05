@@ -45,7 +45,6 @@
      public function update(){
        global $db;
        $stmt= $db->query("update company set 
-          
           name= '$this->name', 
           email= '$this->email',
           country_id= '$this->country_id',
@@ -75,9 +74,7 @@
 
 
 
-
+     
 
   }
-
-
 ?>

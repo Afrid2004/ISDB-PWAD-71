@@ -3,7 +3,7 @@
    
      define("SERVER","localhost");
      define("USER","root");
-     define("DATABASE","school");
+     define("DATABASE","project71");
      define("PASSWORD","");
 
    // Remote
@@ -13,7 +13,7 @@
     //define("PASSWORD","");
 
     $db=new mysqli(SERVER,USER,PASSWORD,DATABASE);
-    $tx="";
+    $tx="core_";
   
 
 ?>

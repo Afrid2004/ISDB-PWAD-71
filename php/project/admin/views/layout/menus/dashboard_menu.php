@@ -1,5 +1,6 @@
 <li class="nav-item">
-    <a href="home" class="nav-link">
+    <a href="<?php echo $base_url?>/home" class="nav-link <?php
+      echo $_GET["class"] == "home" ? "active":"" ?>">
       <i class="nav-icon fa fa-th"></i>
       <p>
         Dashboard
@@ -25,7 +26,8 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="<?php echo $base_url?>/company" class="nav-link" >
+    <a href="<?php echo $base_url?>/company" class="nav-link  <?php
+      echo $_GET["class"] == "company" ? "active":"" ?>  " >
         <i class="nav-icon fa fa-th"></i>
         <p>
           company
