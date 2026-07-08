@@ -96,43 +96,9 @@
                         <th class="text-white border-0 text-end"> <button class="btn btn-success add_cart">Add</button></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="align-middle">
-                            <h6 class="mb-0 text-nowrap">Platinum web hosting package</h6>
-                            <p class="mb-0">Down 35mb, Up 100mb</p>
-                        </td>
-                        <td class="align-middle text-center">2</td>
-                        <td class="align-middle text-end">$65.00</td>
-                        <td class="align-middle text-end">$130.00</td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle">
-                            <h6 class="mb-0 text-nowrap">2 Page website design</h6>
-                            <p class="mb-0">Includes basic wireframes and responsive templates</p>
-                        </td>
-                        <td class="align-middle text-center">1</td>
-                        <td class="align-middle text-end">$2,100.00</td>
-                        <td class="align-middle text-end">$2,100.00</td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle">
-                            <h6 class="mb-0 text-nowrap">Mobile App Development</h6>
-                            <p class="mb-0">Includes responsive navigation</p>
-                        </td>
-                        <td class="align-middle text-center">8</td>
-                        <td class="align-middle text-end">$5,00.00</td>
-                        <td class="align-middle text-end">$4,000.00</td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle">
-                            <h6 class="mb-0 text-nowrap">Web App Development</h6>
-                            <p class="mb-0">Includes react spa</p>
-                        </td>
-                        <td class="align-middle text-center">6</td>
-                        <td class="align-middle text-end">$2,000.00</td>
-                        <td class="align-middle text-end">$12,000.00</td>
-                    </tr>
+                <tbody class="print_cart">
+                   
+                    
                 </tbody>
             </table>
         </div>
@@ -150,7 +116,7 @@
                         </tr>
                         <tr class="border-top">
                             <th class="text-900">Total:</th>
-                            <td class="fw-semi-bold">$19688.40</td>
+                            <td class="fw-semi-bold grand_total">$19688.40</td>
                         </tr>
                         <tr class="border-top border-top-2 fw-bolder">
                             <th class="text-900">Amount Due:</th>
@@ -158,11 +124,16 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <textarea name="" id="" class="remark"></textarea>
             </div>
         </div>
     </div>
-    <div class="card-footer bg-body-tertiary">
-        <p class="fs-10 mb-0"><strong>Notes: </strong>We really appreciate your business and if there’s anything else we can do, please let us know!</p>
+    <div class="card-footer bg-body-tertiary d-flex justify-content-between">
+        <span class="fs-10 mb-0"><strong>Notes: </strong>We really appreciate your business and if there’s anything else we can do, please let us know!</span>
+        <button class="btn btn-success btn_process btn-sm">
+              Process
+        </button>
     </div>
 </div>
 
@@ -187,50 +158,188 @@
 
 // product
 
- document.querySelector("#cmbProduct").addEventListener("change" , function(){
-	  let product_id = document.querySelector("#cmbProduct").value;
-	  fetch(`<?php echo $base_url?>/api/product/find/${product_id}`)
-	  .then(res => res.json())
-	  .then( data =>{
-		  console.log(data.product);
-		   document.querySelector(".qty").value= 1;
-		   document.querySelector(".rate").value= data.product.purchase_price;
-		   document.querySelector(".amount").value= data.product.purchase_price;
-	    })
-	  .catch(err => {
-		  console.log(err);
-	  });  
- });
+//  document.querySelector("#cmbProduct").addEventListener("change" , function(){
+// 	  let product_id = document.querySelector("#cmbProduct").value;
+// 	  fetch(`<?php echo $base_url?>/api/product/find/${product_id}`)
+// 	  .then(res => res.json())
+// 	  .then( data =>{
+// 		  console.log(data.product);
+// 		   document.querySelector(".qty").value= 1;
+// 		   document.querySelector(".rate").value= data.product.purchase_price;
+// 		   document.querySelector(".amount").value= data.product.purchase_price;
+// 	    })
+// 	  .catch(err => {
+// 		  console.log(err);
+// 	  });  
+//  });
+
 // increase qty and amount 
- document.querySelector(".qty").addEventListener("change" , function(){
-	  let qty = document.querySelector(".qty").value;
-	  let rate = document.querySelector(".rate").value
-	  document.querySelector(".amount").value= qty * rate; 
- });
+//  document.querySelector(".qty").addEventListener("change" , function(){
+// 	  let qty = document.querySelector(".qty").value;
+// 	  let rate = document.querySelector(".rate").value
+// 	  document.querySelector(".amount").value= qty * rate; 
+//  });
 
-// add to cart 
+// add to cart
 
+//  document.querySelector(".add_cart").addEventListener("click" , function(){
+// 	  let product_id = document.querySelector("#cmbProduct").value;
+// 	  let product_name = document.querySelector("#cmbProduct  option:checked").textContent;
+// 	  let qty = document.querySelector(".qty").value;
+// 	  let rate = document.querySelector(".rate").value;
+// 	  let amount = document.querySelector(".amount").value= qty * rate; 
 
- document.querySelector(".add_cart").addEventListener("click" , function(){
-	  let product_id = document.querySelector("#cmbProduct").value;
-	  let product_name = document.querySelector("#cmbProduct  option:checked").textContent;
-	  let qty = document.querySelector(".qty").value;
-	  let rate = document.querySelector(".rate").value;
-	  let amount = document.querySelector(".amount").value= qty * rate; 
-
-	  let item= {
-		id:product_id,
-		name: product_name,
-		qty,
-		rate,
-		amount
-	  }
+// 	  let item= {
+// 		id:product_id,
+// 		name: product_name,
+// 		qty,
+// 		rate,
+// 		amount
+// 	  }
 
 	  
 	  
+//  });
+
+$(function(){
+  
+ let purchase = new Cart("purchase");
+
+ printCart()
+// product 
+ $("#cmbProduct").on("change", function(){
+    let product_id= $(this).val();
+    $.ajax({
+        url:`<?php echo $base_url?>/api/product/find/${product_id}`,
+        method:"get",
+        data:{},
+        success:function(res){ 
+            let data = JSON.parse(res)  
+            $(".qty").val(1);
+            $(".rate").val(data.product.price);
+            $(".amount").val(data.product.price);
+        },
+        error:function(err){
+        }
+    });
+ })
+
+ $(".qty").on("change", function(){
+     let qty= $(".qty").val();
+     let rate= $(".rate").val();
+      $(".amount").val(rate * qty);
  });
+
+ 
+  $(".add_cart").on("click", function(){
+
+    let product_id= $("#cmbProduct").val();
+    let product_name= $("#cmbProduct option:checked").text();
+    let qty= Number($(".qty").val()) ;
+    let price= Number($(".rate").val()) ;
+    let amount= Number($(".amount").val());
+    // let vat= $(".vat").val();
+    // let discount= $(".discount").val();
+
+
+   let data= {
+     id:product_id,
+     product_name,
+     qty,
+     price,
+     amount
+   }
+   purchase.AddItem(data);
+   printCart();
+  })
+
+
+  function printCart(){
+     let items= purchase.getData() ?? [];
+     console.log(items);
+     let grand_total=0;
+     let html=``;
+     items.forEach((item)=>{
+     grand_total += item.price * item.qty;
+     
+      html += `
+      
+          <tr>
+            <td class="align-middle">
+                <h6 class="mb-0 text-nowrap">${item.product_name}</h6>
+                <p class="mb-0">Down 35mb, Up 100mb</p>
+            </td>
+            <td class="align-middle text-center">${item.qty}</td>
+            <td class="align-middle text-end">${item.price}</td>
+            <td class="align-middle text-end">${item.price * item.qty}</td>
+            <td class="align-middle text-end"><button data-product_id='${item.id}' class="btn btn-danger del">Del</button></td>
+         </tr>
+      
+      `;
+     });
+
+
+     $(".print_cart").html(html);
+
+     $(".grand_total").text(grand_total);
+  }
+
+   // delete
+   $("body").on("click", ".del", function(){
+       let item_id= $(this).data("product_id");
+       purchase.delItem(item_id);
+       printCart();
+   }) 
+
+
+  $(".btn_process").on("click", function(){
+   let supplier_id= $("#cmbSupplier").val();
+   let shipping_address= $(".address").val();
+   let remark= $(".remark").val();
+   let products = purchase.getData();
+
+
+
+   $.ajax({
+     url:"<?php echo $base_url?>/api/purchase/purchaseProcess",
+     method:"post",
+     data:{supplier_id, shipping_address, remark,products },
+     success:function(res){
+         console.log(res);
+     },
+     error:function(err){
+        console.log(err);
+        
+     }
+   });
+
+
+
+
+  });
+
+
+
+
+
+
+});
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 </script>
+
+

@@ -78,8 +78,25 @@ class Product extends Model implements JsonSerializable{
 	public static function find($id){
 		global $db,$tx;
 		$result =$db->query("select id,name,price,purchase_price,description,photo,star,is_brand,offer_discount,uom_id,barcode,created_at,updated_at,category_id from {$tx}products where id='$id'");
-		$product=$result->fetch_object();
-			return $product;
+		$found_product=$result->fetch_object();
+        $product = new Product();
+		$product->set(
+        $found_product->id,
+		$found_product->name,
+		$found_product->price,
+		$found_product->purchase_price,
+		$found_product->description,
+		$found_product->photo,
+		$found_product->star,
+		$found_product->is_brand,
+		$found_product->offer_discount,
+		$found_product->uom_id,
+		$found_product->barcode,
+		$found_product->created_at,
+		$found_product->updated_at,
+		$found_product->category_id
+		);
+		return $product;
 	}
 	static function get_last_id(){
 		global $db,$tx;
@@ -115,7 +132,7 @@ class Product extends Model implements JsonSerializable{
 		$html="<select class='form-select' id='$name' name='$name'> ";
 		$result =$db->query("select id,name from {$tx}products");
 		while($product=$result->fetch_object()){
-			$html.="<option value ='$product->id'>$product->name</option>";
+			$html.="<option  value ='$product->id'>$product->name</option>";
 		}
 		$html.="</select>";
 		return $html;

@@ -44,7 +44,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" integrity="sha512-g9tTLy1b/V4XfmVsaWVvV9IJ7hpKA2OMivvrXmMzoejUz6ZWW3NpZt0Jgzy996FNpcxpd7qnMfQXtp9xVQUmFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js" integrity="sha512-pgZnzhVboWlSk9WOAbmqa3vzzNe2jotOHCXe6GYY7NSnu3ij3o3Ec5JfuWV23PyJOB27YHLIHwM9acDN3TdU0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="<?php echo $base_url?>/js/cart2.js"></script>
+    
     <script>
+
       var isRTL = JSON.parse(localStorage.getItem('isRTL'));
       if (isRTL) {
         var linkDefault = document.getElementById('style-default');

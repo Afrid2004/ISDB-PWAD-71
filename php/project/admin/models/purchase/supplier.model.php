@@ -85,8 +85,9 @@ class Supplier extends Model implements JsonSerializable{
 
 	static function html_select($name="cmbSupplier"){
 		global $db,$tx;
-		$html="<select class='search' id='$name' name='$name'> ";
 		$result =$db->query("select id,name from {$tx}suppliers");
+		
+		$html="<select class='search' id='$name' name='$name'> ";
 		while($supplier=$result->fetch_object()){
 			$html.="<option value ='$supplier->id'>$supplier->name</option>";
 		}
