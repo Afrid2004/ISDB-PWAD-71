@@ -1,0 +1,155 @@
+<!-- html(): Get or set the HTML content of an element.
+text(): Get or set the text content of an element.
+append(): Insert content at the end of an element.
+prepend(): Insert content at the beginning of an element.
+after(): Insert content after an element.
+before(): Insert content before an element.
+appendTo(): Append elements to the specified target.
+prependTo(): Prepend elements to the specified target.
+wrap(): Wrap an element with another element.
+unwrap(): Remove the parent element of selected elements.
+wrapAll(): Wrap all selected elements in a single wrapper.
+wrapInner(): Wrap the inner content of an element.
+clone(): Clone an element.
+remove(): Remove elements from the DOM.
+empty(): Remove all child elements.
+detach(): Remove elements while retaining data and events.
+replaceWith(): Replace an element with new content.
+replaceAll(): Replace all matched elements with new content.
+val(): Get or set the value of form elements.
+attr(): Get or set attributes of an element.
+removeAttr(): Remove an attribute from an element.
+prop(): Get or set properties of an element.
+removeProp(): Remove a property from an element.
+data(): Get or set data attributes for an element.
+toggle(): Toggle visibility of elements. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery DOM Manipulation Methods</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+    .container {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">jQuery DOM Manipulation Examples</h1>
+
+  <div class="container" id="container1">
+    <p class="para">This is paragraph 1.</p>
+    <p class="para">This is paragraph 2.</p>
+    <p class="para">This is paragraph 3.</p>
+    <p class="para">Updated paragraph text.</p>
+    <ul id="list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+  </div>
+  <button id="btn">Click Me</button>
+
+  <script>
+  
+    
+
+
+    $(document).ready(function () {
+     
+      /*** 1. html() - Get or set HTML content ***/
+      // console.log($("#main-title").html()); // Get HTML content
+      // $("#main-title").html("Updated Title"); // Set HTML content
+
+      /*** 2. text() - Get or set text content ***/
+      // console.log($(".para:first").text()); // Get text content
+      // $(".para:first").text("Updated paragraph text."); // Set text content
+
+    //   /*** 3. append() - Add content to the end of an element ***/
+      //  $("#list").append("<li>Appended Item</li>"); // Add a list item at the end
+      //  $("#btn").on("click",function(){
+      //      $("#list").prepend("<li>Prepended Item</li>")
+      //  });
+
+      // /*** 4. prepend() - Add content to the beginning of an element ***/
+      // $("#list").prepend("<li>Prepended Item</li>"); // Add a list item at the beginning
+
+      // /*** 5. after() - Insert content after an element ***/
+      // $(".para:last").after("<p>Paragraph added after the last paragraph.</p>");
+
+      // /*** 6. before() - Insert content before an element ***/
+        // $(".para:first").before("<p>Paragraph added before the first paragraph.</p>");
+        // $(".para:eq(1)").before("<p>Paragraph added before the first paragraph.</p>");
+
+      /*** 7. appendTo() - Append elements to a target ***/
+    //  $("<p>Appended using appendTo.</p>").appendTo("#container1");
+
+    //   // /*** 8. prependTo() - Prepend elements to a target ***/
+    //   $("<p>Prepended using prependTo.</p>").prependTo("#container1");
+
+      // /*** 9. wrap() - Wrap an element with another element ***/
+      // $(".para:eq(2)").wrap("<div class='highlight'></div>");
+
+      /*** 10. unwrap() - Remove the parent element ***/
+      // $(".para").unwrap();
+
+      // /*** 11. wrapAll() - Wrap all selected elements in a single wrapper ***/
+      // $(".para").wrapAll("<div class='container'></div>");
+
+      /*** 12. wrapInner() - Wrap inner content of an element ***/
+      // $("#main-title").wrapInner("<span class='highlight'></span>");
+
+      /*** 13. clone() - Create a copy of an element ***/
+      // const clonedList = $("#list").clone();
+      // $("#container1").after(clonedList);
+
+      // /*** 14. remove() - Remove an element ***/
+      // $("p:contains('Updated paragraph text.')").remove();
+
+      // /*** 15. empty() - Remove all child elements ***/
+      // $("#list").empty();
+
+
+
+      // /*** 16. replaceWith() - Replace an element with new content ***/
+     // $(".para:first").replaceWith("<p>Replaced paragraph.</p>");
+
+      // /*** 17. replaceAll() - Replace all matching elements ***/
+      // $("<h2>Replaced title</h2>").replaceAll("#main-title");
+
+      // /*** 18. val() - Get or set the value of form elements ***/
+      // $("<input type='text' id='input-box' value='Initial Value'>").appendTo("body");
+      // console.log($("#input-box").val()); // Get value
+      // $("#input-box").val("Updated Value"); // Set value
+
+      // /*** 19. attr() - Get or set attributes ***/
+      // $("#input-box").attr("placeholder", "Enter text here");
+      // console.log($("#input-box").attr("placeholder")); // Get attribute value
+
+      // /*** 20. removeAttr() - Remove an attribute ***/
+      // $("#input-box").removeAttr("placeholder");
+
+      // /*** 21. prop() - Get or set properties ***/
+      // $("#input-box").prop("disabled", true); // Disable input
+      // console.log($("#input-box").prop("disabled")); // Get property value
+
+      // /*** 22. removeProp() - Remove a property ***/
+      // $("#input-box").removeProp("disabled");
+
+      // // /*** 23. data() - Get or set data attributes ***/
+      // $("#btn").data("info", { type: "button", action: "click" , id: "5"});
+      // console.log($("#btn").data("info")); // Get data attributes
+
+     
+    });
+  </script>
+</body>
+</html>

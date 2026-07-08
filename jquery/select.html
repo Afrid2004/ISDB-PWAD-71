@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <input type="checkbox" id="Select_All" class="Select_All"  />
+        <label class="Select_All"  for="Select_All">Select All</label>
+      </li>
+      <hr />
+      <li>
+        <input class="toggle" type="checkbox" id="bangla" />
+        <label for="bangla">Bangla</label>
+      </li>
+      <li>
+        <input class="toggle" type="checkbox" id="Eng" />
+        <label for="Eng">Eng</label>
+      </li>
+      <li>
+        <input class="toggle" type="checkbox" id="math" />
+        <label for="math">math</label>
+      </li>
+      <li>
+        <input class="toggle" type="checkbox" id="physics" />
+        <label for="physics">physics</label>
+      </li>
+      <li>
+        <input class="toggle" type="checkbox" id="History" />
+        <label for="History">History</label>
+      </li>
+      <li>
+        <input id="btn" type="button" value="All value" />
+      </li>
+    </ul>
+
+    <script>
+      $(function () {
+        $("li").css("list-style", "none");
+
+
+        //$(".toggle").attr("checked", true);
+         $(".Select_All").on('click',function(){
+             var checkBoxes = $(".toggle");
+             checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+         });
+
+        $("#btn").on("click", function(){
+           var val= new Array();
+            $(".toggle:checked").each(function(key, value){
+                val.push( $(this).attr('id'));
+              
+         })
+         console.log( val );
+         
+        });
+        
+       
+      });
+    </script>
+  </body>
+</html>

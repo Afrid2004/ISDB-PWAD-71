@@ -1,0 +1,286 @@
+<!-- Accordion
+Autocomplete
+Button
+Dialog
+Datepicker
+Draggable
+Droppable
+Progressbar
+Resizable
+Selectable
+Slider
+Sortable
+Tabs -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery UI Comprehensive Examples</title>
+    <!-- Include jQuery and jQuery UI -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> -->
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .example {
+            margin-bottom: 50px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .draggable {
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            text-align: center;
+            line-height: 100px;
+            cursor: move;
+            margin-bottom: 10px;
+            border: 1px solid #007bff;
+        }
+
+        .droppable {
+            width: 150px;
+            height: 150px;
+            background: lightgray;
+            text-align: center;
+            line-height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>jQuery UI Functions with Examples</h1>
+
+    <div class="example">
+        <h2>Accordion</h2>
+        <div id="accordion">
+            <h3>Section 1</h3>
+            <div>
+                <p>Content for Section 1</p>
+            </div>
+            <h3>Section 2</h3>
+            <div>
+                <p>Content for Section 2</p>
+            </div>
+            <h3>Section 3</h3>
+            <div>
+                <p>Content for Section 3</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Autocomplete</h2>
+        <label for="tags">Type a programming language: </label>
+        <input id="tags">
+    </div>
+
+    <div class="example">
+        <h2>Button</h2>
+        <button id="button">A Button</button>
+
+        <input type="checkbox" id="check-button">
+        <label for="check-button">A Checkbox Button</label>
+    </div>
+
+    <div class="example">
+        <h2>Dialog</h2>
+        <button id="open-dialog">Open Dialog</button>
+
+        <div id="dialog" title="A Dialog Box">
+            <p>This is a dialog example with jQuery UI.</p>
+        </div>
+
+    </div>
+
+    <div class="example">
+        <h2>Datepicker</h2>
+        <p>Select a date: <input type="text" id="datepicker"></p>
+    </div>
+
+    <div class="example">
+        <h2>Draggable</h2>
+        <div class="draggable" id="draggable">Drag me</div>
+    </div>
+
+    <div class="example">
+        <h2>Droppable</h2>
+        <div class="draggable" id="draggable2">Drag me</div>
+        <div class="droppable" id="droppable">Drop here</div>
+    </div>
+
+    <div class="example">
+        <h2>Progressbar</h2>
+        <div id="progressbar"></div>
+    </div>
+
+    <div class="example">
+        <h2>Resizable</h2>
+        <div id="resizable" style="width: 150px; height: 150px; background: #ddd; text-align: center;">
+            Resize me
+        </div>
+    </div>
+
+    <div class="example">
+        <h2>Selectable</h2>
+        <ol id="selectable">
+            <li class="">Item 1</li>
+            <li class="">Item 2</li>
+            <li class="">Item 3</li>
+            <li class="">Item 4</li>
+        </ol>
+    </div>
+
+    <div class="example">
+        <h2>Slider</h2>
+        <div id="slider"></div>
+        <p>Value: <span id="slider-value"></span></p>
+    </div>
+
+    <div class="example">
+        <h2>Sortable</h2>
+        <ul id="sortable">
+
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+
+        </ul>
+    </div>
+
+    <!-- <div id="sortable">
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+</div> -->
+
+    <div class="example">
+        <h2>Tabs</h2>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Tab 1</a></li>
+                <li><a href="#tabs-2">Tab 2</a></li>
+                <li><a href="#tabs-3">Tab 3</a></li>
+            </ul>
+            <div id="tabs-1">
+                <p>Content for Tab 1</p>
+            </div>
+            <div id="tabs-2">
+                <p>Content for Tab 2</p>
+            </div>
+            <div id="tabs-3">
+                <p>Content for Tab 3</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // Accordion
+            $("#accordion").accordion();
+
+            // // Autocomplete
+            const tags = ["JavaScript", "Python", "Ruby", "Java", "C#", "C++", "PHP"];
+            $("#tags").autocomplete({ source: tags });
+
+            // // Button
+            $("#button").button();
+            $("#check-button").button();
+
+            // // Dialog
+            $("#dialog").dialog({ autoOpen: false });
+            $("#open-dialog").on("click", function () {
+                $("#dialog").dialog("open")
+            });
+
+            // Datepicker
+            $("#datepicker").datepicker({
+
+            });
+
+            // // Draggable
+            $("#draggable").draggable();
+            $("#draggable2").draggable();
+
+            // Droppable
+            $("#droppable").droppable({
+                drop: function () {
+                    $(this).text("Dropped!");
+                    $(this).css("background", "lightgreen");
+                    $("#draggable2").hide();
+                }
+            });
+
+            // // Progressbar
+            $("#progressbar").progressbar({ value: 80 });
+
+            // Resizable
+            $("#resizable").resizable();
+
+            // // Selectable
+            $("#selectable").selectable();
+
+            // Slider
+            $("#slider").slider({
+                change: function (event, ui) {
+                    $("#slider-value").text(ui.value);
+                }
+            });
+
+            // // Sortable
+            // // $("#sortable").sortable();
+
+            // Tabs
+            $("#tabs").tabs();
+
+
+
+            $("#sortable").sortable({
+                update: function (event, ui) {
+                    // Collect the text content of each <li> after sorting
+                    const order = $("#sortable li").map(function () {
+                        return $(this).text();
+                    }).get(); // Convert to an array
+                    console.log("New Order:", order);
+                }
+            });
+
+
+            $("#selectable").selectable({
+                stop: function () {
+                    const selectedItems = $(".ui-selected").map(function () {
+                        return $(this).text();
+                    }).get();
+                    console.log("Selected items:", selectedItems);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

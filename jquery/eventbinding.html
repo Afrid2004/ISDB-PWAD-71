@@ -1,0 +1,218 @@
+<!-- Explanation of jQuery Event Binding Methods
+on(): Bind one or more events to elements.
+off(): Remove events bound with .on().
+one(): Bind an event that triggers only once.
+delegate(): Bind events to current or future child elements.
+undelegate(): Remove delegated events.
+bind(): Bind events to elements (legacy method, replaced by .on()).
+unbind(): Remove events bound with .bind() (legacy method).
+Shortcut methods:
+hover(), click(), dblclick(), focus(), blur(), change(), etc.
+Keyboard events:
+keydown(), keyup(), keypress().
+Mouse events:
+mousedown(), mouseup(), mousemove().
+Other events:
+submit(), resize(), scroll().
+Custom events: Trigger and bind user-defined events -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Event Binding Methods</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+    .container {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body  >
+  <h1 id="title">jQuery Event Binding Methods Examples</h1>
+  <button id="btn-click">Click Me</button>
+  <button id="btn-hover">Hover Over Me</button>
+  <button id="btn-once">Click Once</button>
+
+  <a class="abutton" href="">Abutton</a>
+  <input type="text" id="input-box" placeholder="Type something...">
+  <div  class="container" id="container"
+  >Event Binding Example
+  
+</div>
+  
+
+  <script>
+    $(document).ready(function () {
+      /*** 1. on() - Bind event(s) to elements ***/
+      $("#btn-click").on("click", function (e) {
+        //alert("Button clicked using .on() method!");
+        console.log(e);
+        
+      });
+
+      // $("#id").on("click", function(){
+        
+      // });
+
+     
+      // $("#id").on("click", abc());
+
+      // // $("#id").on({
+      // //  mouseenter:function(){
+
+      // //  },
+      // //  mouseleave:function(){
+          
+      // //  }
+      // // });
+
+      // Bind multiple events using .on()
+      // $("#btn-hover").on({
+      //   mouseenter: function () {
+      //     $(this).addClass("highlight");
+      //   },
+      //   mouseleave: function () {
+      //     $(this).removeClass("highlight");
+      //   }
+      // });
+
+      /*** 2. off() - Remove event handlers ***/
+      // $("#btn-click").on("dblclick", function () {
+      //   alert("Double-click disabled using .off()!");
+      //     $("#btn-click").off("dblclick");
+      // });
+
+     
+      // /*** 3. one() - Bind event to trigger only once ***/
+      // $("#btn-once").one("click", function () {
+      //   alert("This button can only be clicked once!");
+      // });
+
+      
+
+
+      /*** 4. delegate() - Bind event to current or future child elements ***/
+      $("#container").delegate("button", "click", function () {
+        alert("Event triggered for dynamically added button.");
+      });
+
+      // // // Add a dynamic button
+      $("<button>Dynamic Button</button>").appendTo("#container");
+
+      /*** 5. undelegate() - Remove delegated events ***/
+      // $("#btn-click").click(function () {
+      //   $("#container").undelegate("button", "click");
+      //   alert("Dynamic button event handler removed.");
+      // });
+
+      // /*** 6. bind() - Bind event to elements (legacy, use .on()) ***/
+      // $("#input-box").bind("focus", function () {
+      //   $(this).css("border", "5px solid green");
+      // });
+
+      // $("#input-box").bind("blur", function () {
+      //   $(this).css("border", "1px solid black");
+      // });
+
+      // /*** 7. unbind() - Remove events bound with .bind() (legacy) ***/
+      // $("#btn-click").click(function () {
+      //   $("#input-box").unbind("focus blur");
+      //   alert("Focus and blur events removed.");
+      // });
+
+      /*** 8. hover() - Shortcut for mouseenter and mouseleave ***/
+      // $("#btn-hover").hover(
+      //   function () {
+      //     $(this).addClass("highlight");
+      //   },
+      //   function () {
+      //     $(this).removeClass("highlight");
+      //   }
+      // );
+
+      // /*** 9. click() - Bind click event ***/
+      // $("#btn-click").click(function () {
+      //   console.log("Button clicked using .click()!");
+      // });
+
+      // /*** 10. dblclick() - Bind double-click event ***/
+      // $("#btn-click").dblclick(function () {
+      //   alert("Button double-clicked!");
+      // });
+
+      // /*** 11. focus() - Bind focus event ***/
+      // $("#input-box").focus(function () {
+      //   console.log("Input box is focused.");
+      // });
+
+      // /*** 12. blur() - Bind blur event ***/
+      // $("#input-box").blur(function () {
+      //   console.log("Input box lost focus.");
+      // });
+
+      // /*** 13. change() - Bind change event ***/
+      // $("#input-box").keyup(function () {
+      //   alert("Input box value changed!");
+      // });
+
+      // /*** 14. keydown() - Bind keydown event ***/
+      // $("#input-box").keydown(function (e) {
+      //   console.log("Key pressed:", e.key);
+      // });
+
+      // /*** 15. keyup() - Bind keyup event ***/
+      // $("#input-box").keyup(function (e) {
+      //   console.log("Key released:", e.key);
+      // });
+
+      // /*** 16. keypress() - Bind keypress event ***/
+      // $("#input-box").keypress(function (e) {
+      //   console.log("Key pressed (keypress):", e.key);
+      // });
+
+      /*** 17. mousedown() - Bind mousedown event ***/
+      // $("#container").mousedown(function () {
+       
+      //   console.log("Mouse button pressed inside container.");
+      // });
+
+      /*** 18. mouseup() - Bind mouseup event ***/
+      // $("#container").mouseup(function () {
+      //   console.log("Mouse button released inside container.");
+      // });
+
+      /*** 19. mousemove() - Bind mousemove event ***/
+      // $("#container").mousemove(function (e) {
+      //   console.log("Mouse moved at:", e.pageX, e.pageY);
+      // });
+
+      // /*** 20. submit() - Bind submit event ***/
+      // const form = $("<form><input type='text' placeholder='Type...' /><button type='submit'>Submit</button></form>");
+      // form.appendTo("body");
+      // form.submit(function (e) {
+      //   e.preventDefault();
+      //   alert("Form submitted!");
+      // });
+
+      /*** 21. resize() - Bind resize event to window ***/
+      // $(window).resize(function () {
+      //   console.log("Window resized.");
+      // });
+
+      // /*** 22. scroll() - Bind scroll event to window or elements ***/
+      // $(window).scroll(function () {
+      //   console.log("Window is scrolling.");
+      // });
+
+   
+    });
+  </script>
+</body>
+</html>

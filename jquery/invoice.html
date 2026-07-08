@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        .invoice-container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .header span {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .details{
+            display: flex;
+            justify-content: space-between;
+        }
+        .details, .payment-info {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .details div, .payment-info div {
+            margin-bottom: 5px;
+           
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+        .total-row {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <span>&</span> INVOICE
+        </div>
+        <div class="details">
+        <div>
+            <div><strong>Billed To:</strong> Imari Chavez</div> 
+            <div>+123-456-7890</div>
+            <div>613 Ivy Road, Hawkeville,</div>
+            <div> GA, USA 30306</div>
+        </div>
+        <div>
+            <div><strong>Invoice No:</strong> 12345</div>
+            <div><strong>Date:</strong> 16 June 2025</div>
+        </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Eggshell Camisole Top</td>
+                    <td>1</td>
+                    <td>$123</td>
+                    <td>$123</td>
+                </tr>
+                <tr>
+                    <td>Cuban Collar Shirt</td>
+                    <td>2</td>
+                    <td>$127</td>
+                    <td>$254</td>
+                </tr>
+                <tr>
+                    <td>Floral Cotton Dress</td>
+                    <td>1</td>
+                    <td>$123</td>
+                    <td>$123</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Subtotal</td>
+                    <td>$500</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="3">Total</td>
+                    <td>$500</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="footer">
+            <p>Thank you!</p>
+            <div class="payment-info">
+                <div><strong>Payment Information</strong></div>
+                <div>Bank: Briard Bank</div>
+                <div>Account Name: Samira Hadid</div>
+                <div>Account No: 123-456-7890</div>
+                <div>Pay By: 31 July 2025</div>
+                <div>123 Anywhere St., Any City, ST 12345</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

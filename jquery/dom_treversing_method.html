@@ -1,0 +1,157 @@
+<!-- 
+parent(): Selects the immediate parent.
+parents(): Selects all ancestors.
+parentsUntil(): Selects ancestors up to a specific element.
+children(): Selects all direct children.
+find(): Selects all descendants matching a selector.
+siblings(): Selects all siblings.
+next(): Selects the next sibling.
+nextAll(): Selects all following siblings.
+nextUntil(): Selects following siblings until a specific element.
+prev(): Selects the previous sibling.
+prevAll(): Selects all preceding siblings.
+prevUntil(): Selects preceding siblings until a specific element.
+first(): Selects the first element among a group.
+last(): Selects the last element among a group.
+eq(): Selects an element by its index.
+filter(): Filters elements based on a condition.
+not(): Excludes elements matching a selector.
+has(): Selects elements containing a specific child.
+is(): Checks if an element matches a selector.
+each(): Iterates over elements.
+closest(): Finds the closest ancestor matching a selector.
+add(): Adds elements to the matched set.
+end(): Ends the most recent filtering operation.
+contents(): Selects all child nodes, including text. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery DOM Traversing Methods</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+
+    .selected {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <h1 id="main-title">Main Title</h1>
+    <p class="intro">This is an introductory paragraph.</p>
+    <p>This is another paragraph.</p>
+    <ul id="list">
+      <li class="first-item">Item </li>
+      <li>Item </li>
+      <li class="last-item">Item</li>
+    </ul>
+
+
+
+
+
+  </div>
+
+  <div class="sub-container">
+    <span>Sub-container content</span>
+    <a href="#" class="link">Learn more</a>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      /*** 1. parent() - Select the immediate parent ***/
+      // $("span").parent().addClass("highlight"); // Highlights the parent <div> of <span>
+
+      //   /*** 2. parents() - Select all ancestors ***/
+      //  $("span").parents().addClass("highlight"); // Highlights all ancestors of <span>
+
+      //   /*** 3. parentsUntil() - Select all ancestors up to a specified element ***/
+        // $("span").parentsUntil("body").css({"color": "red", "border": "2px solid red"});
+
+      //   /*** 4. children() - Select all direct children ***/
+      // $("#container").children().addClass("selected"); // Highlights direct children of #container
+
+
+      //   /*** 5. find() - Select all descendants matching a selector ***/
+      //    $("#container").find("a").css({"text-decoration": "none"}); // Underlines all <a> inside #container
+
+      //   /*** 6. siblings() - Select all siblings ***/
+      //$("#main-title").siblings().css("background-color", "lightgray"); // Highlights siblings of #main-title
+
+      //   /*** 7. next() - Select the next sibling ***/
+       //  $(".intro").next().addClass("highlight"); // Highlights the paragraph after .intro
+
+      //   /*** 8. nextAll() - Select all following siblings ***/
+     //  $(".intro").nextAll().addClass("highlight"); // Highlights all siblings after .intro
+
+      //   /*** 9. nextUntil() - Select all following siblings until a specified element ***/
+      //  $(".intro").nextUntil("ul").css("font-style", "italic");
+
+      //   /*** 10. prev() - Select the previous sibling ***/
+        // $(".last-item").prev().addClass("selected"); // Highlights the sibling before .last-item
+
+      //   /*** 11. prevAll() - Select all preceding siblings ***/
+     //   $(".last-item").prevAll().css("color", "blue"); // Highlights all siblings before .last-item
+
+      //   /*** 12. prevUntil() - Select all preceding siblings until a specified element ***/
+      //  $(".last-item").prevUntil(".first-item").css("font-size", "20px");
+
+      //   /*** 13. first() - Select the first element among a group ***/
+      //  $("ul li").first().css("font-weight", "bold"); // Highlights the first <li> in the list
+
+      //   /*** 14. last() - Select the last element among a group ***/
+       //  $("ul li").last().css("text-transform", "uppercase"); // Highlights the last <li> in the list
+
+      //   /*** 15. eq() - Select the element at a specific index ***/
+        // $("ul li:eq(1)").css("color", "green"); // Highlights the second <li> (index 1)
+
+      //   /*** 16. filter() - Filter elements based on a condition ***/
+       //$("ul li").filter(".first-item").css("background-color", "lightblue"); // Highlights <li> with class .first-item
+
+      //   /*** 17. not() - Exclude elements that match a selector ***/
+       // $("ul li").not(".last-item").css("border", "1px dashed gray"); // Excludes .last-item
+
+      //   /*** 18. has() - Select elements containing a specific child ***/
+        //    $("div").has("span").css("padding", "10px"); // Highlights <div> containing a <span>
+
+      //   /*** 19. is() - Check if an element matches a selector ***/
+        // if ($("ul li").first().is(".first-item")) {
+        //   console.log("The first list item has the class 'first-item'");
+        // }
+
+      //   /*** 20. each() - Iterate over elements ***/
+      $("ul li").each(function (index) {
+        
+        let item= $(this).text();
+
+
+        $(this).text(  item +  (index+1 )); // Adds index info to each <li>
+      });
+
+      //   /*** 21. closest() - Find the closest ancestor matching a selector ***/
+        $(".link").closest(".sub-container").css("border", "2px solid red");
+
+      //   /*** 22. add() - Add elements to the set of matched elements ***/
+      //   $("ul li").add("p").css("font-family", "Arial"); // Applies font-family to <li> and <p>
+
+      /*** 23. end() - End the most recent filtering operation ***/
+      $("ul li")
+        .filter(".first-item")
+        .css("color", "orange")
+        .end()
+        .css("margin", "5px"); // Reverts to the full <li> selection
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!-- 
+css(): Get or set CSS properties for an element.
+addClass(): Add a class to an element.
+removeClass(): Remove a class from an element.
+toggleClass(): Toggle a class on or off for an element.
+hasClass(): Check if an element has a specific class.
+width(): Get or set the width of an element (content box).
+height(): Get or set the height of an element (content box).
+innerWidth(): Get or set the width including padding.
+innerHeight(): Get or set the height including padding.
+outerWidth(): Get or set the width including padding and border.
+outerHeight(): Get or set the height including padding and border.
+outerWidth(true): Get the width including padding, border, and margin.
+outerHeight(true): Get the height including padding, border, and margin.
+offset(): Get or set the offset position relative to the document.
+position(): Get the position relative to the parent element.
+scrollTop(): Get or set the vertical scroll position of an element.
+scrollLeft(): Get or set the horizontal scroll position of an element.
+animate(): Perform custom animations. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery CSS Methods</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .box {
+      width: 150px;
+      height: 100px;
+      margin: 10px;
+      background-color: lightblue;
+      border: 2px solid blue;
+    }
+    .highlight {
+      background-color: yellow;
+    }
+     /* body{
+      max-width: 500px;
+      max-height: 500px;
+    } */
+    p{
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-title">jQuery CSS Methods Examples</h1>
+  <div class="box" id="box1">Box 1</div>
+  <div class="box" id="box2">Box 2</div>
+  <p id="text" style="color: green;"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, nesciunt quod! Fugit atque autem error dolore porro? Aperiam repellat qui pariatur sapiente quam nam, veniam ullam est? Inventore fuga dolores la tenetur perspiciatis inventore sequi ducimus labore amet, explicabo quma similique repudiandae consequatur itaque, possimus  </p>
+  <button id="btn">Click Me</button>
+
+  <script>
+    $(document).ready(function () {
+      /*** 1. css() - Get and set CSS properties ***/
+      // Get a single CSS property
+      // const bgColor = $("#box1").css("background-color");
+      // console.log("Box 1 Background Color:", bgColor);
+
+      // Set a single CSS property
+      //  $("#box1").css("background-color", "pink");
+
+      // // Set multiple CSS properties
+      // $("#box2").css({
+      //   "background-color": "lightgreen",
+      //   "border-radius": "10px",
+      //   "padding": "10px"
+      // });
+
+      // // /*** 2. addClass() - Add a class to elements ***/
+      //   $("#box1").addClass("highlight"); // Adds the .highlight class
+
+      // // /*** 3. removeClass() - Remove a class from elements ***/
+      // // $("#box1").removeClass("highlight"); // Removes the .highlight class
+
+      // /*** 4. toggleClass() - Toggle a class on elements ***/
+      //    // Toggles the .highlight class
+        
+      //   // $("#btn").on("click", function(){
+      //   //   $("#box2").toggleClass("highlight");
+      //   // })
+
+
+      // // // /*** 5. hasClass() - Check if an element has a specific class ***/
+      // //   $("#box2").addClass("highlight");
+      // // const hasHighlight = $("#box2").hasClass("highlight");
+      // // console.log("Box 2 has 'highlight' class:", hasHighlight);
+
+      // /*** 6. width() - Get or set the width ***/
+      // // Get the width
+      // const box1Width = $("#box1").width(200); //set when value is given
+      // const box1Width1 = $("#box1").width();   // get when value is not given
+      // console.log("Box 1 Width:", box1Width1);
+
+      // // Set the width
+      // //$("#box1").width(200); // Sets the width to 200px
+
+      // // /*** 7. height() - Get or set the height ***/
+      // // // Get the height
+      // // const box1Height = $("#box1").height();
+      // // console.log("Box 1 Height:", box1Height);
+
+      // // // Set the height
+      // // $("#box1").height(150); // Sets the height to 150px
+
+      // // /*** 8. innerWidth() - Get or set the inner width (includes padding) ***/
+      // // const innerWidthBox2 = $("#box2").innerWidth();
+      // // const WidthBox2 = $("#box2").width();
+      // // console.log("Box 2 Inner Width:", innerWidthBox2  );
+      // // console.log("Box 2  Width:", WidthBox2 );
+
+      // // $("#box2").innerWidth(220); // Sets inner width to 220px
+
+      // // /*** 9. innerHeight() - Get or set the inner height (includes padding) ***/
+      // const innerHeightBox2 = $("#box2").innerHeight();
+      // console.log("Box 2 Inner Height:", innerHeightBox2);
+
+      //  $("#box2").innerHeight(130); // Sets inner height to 130px
+
+      // // /*** 10. outerWidth() - Get or set the outer width (includes padding and border) ***/
+      // const outerWidthBox2 = $("#box2").outerWidth();
+      // console.log("Box 2 Outer Width:", outerWidthBox2);
+
+      //  $("#box2").outerWidth(250); // Sets outer width to 250px
+
+      // // /*** 11. outerHeight() - Get or set the outer height (includes padding and border) ***/
+      // const outerHeightBox2 = $("#box2").outerHeight();
+      // console.log("Box 2 Outer Height:", outerHeightBox2);
+
+      // // $("#box2").outerHeight(160); // Sets outer height to 160px
+
+      // // /*** 12. outerWidth(true) - Get outer width including margin ***/
+      // // const outerWidthWithMargin = $("#box2").outerWidth(true);
+      // // console.log("Box 2 Outer Width (with margin):", outerWidthWithMargin);
+
+      // // /*** 13. outerHeight(true) - Get outer height including margin ***/
+      // // const outerHeightWithMargin = $("#box2").outerHeight(true);
+      // // console.log("Box 2 Outer Height (with margin):", outerHeightWithMargin);
+
+      // // /*** 14. offset() - Get or set the offset (position relative to the document) ***/
+      // // // Get the offset
+      // const offsetBox1 = $("#box1").offset();
+      // console.log("Box 1 Offset:", offsetBox1);
+
+      // // // Set the offset
+      // // $("#box1").offset({ top: 50, left: 100 });
+
+      // /*** 15. position() - Get the position (relative to the parent) ***/
+      // // const positionBox1 = $("#box1").position();
+      // // //console.log("Box 1 Position:", positionBox1);
+
+      // // /*** 16. scrollTop() - Get or set the scroll position of an element ***/
+      // //Set up a scrollable area
+      // $("#text").css({
+      //   "overflow-y": "scroll",
+      //   height: "150px"
+      // });
+      // $("#text").css({
+      //   "overflow-x": "scroll",
+      //   // width: "100%"
+      // });
+
+      // // // Set scrollTop
+      // $("#text").scrollTop(20);
+
+      // // // Get scrollTop
+      // const scrollTopValue = $("#text").scrollTop();
+      // console.log("ScrollTop Value:", scrollTopValue);
+
+      // /*** 17. scrollLeft() - Get or set the horizontal scroll position ***/
+      //  $("#text").scrollLeft(10);
+   
+
+      // const scrollLeftValue = $("#text").scrollLeft();
+      // console.log("ScrollLeft Value:", scrollLeftValue);
+
+      /*** 18. animate() - Perform custom animations ***/
+      // $("#btn").click(function () {
+      //   $("#box1").animate({
+      //     width: "300px",
+      //     height: "200px",
+      //     opacity: 0.5
+      //   }, 1000);
+      // });
+    });
+  </script>
+</body>
+</html>
