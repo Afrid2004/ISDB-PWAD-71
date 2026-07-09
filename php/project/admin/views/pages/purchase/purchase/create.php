@@ -306,6 +306,9 @@ $(function(){
      data:{supplier_id, shipping_address, remark,products },
      success:function(res){
          console.log(res);
+         alert("purchase order saved successfully")
+         purchase.clearItem()
+         printCart();
      },
      error:function(err){
         console.log(err);

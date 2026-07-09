@@ -3,7 +3,8 @@ class StockController extends Controller{
 	public function __construct(){
 	}
 	public function index(){
-		view("purchase");
+		$data= Stock::stock_Report();
+		view("purchase", compact('data'));
 	}
 	public function create(){
 		view("purchase");

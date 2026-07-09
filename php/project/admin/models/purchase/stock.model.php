@@ -40,12 +40,32 @@ class Stock extends Model implements JsonSerializable{
 	}
 	public static function all(){
 		global $db,$tx;
-		$result=$db->query("select id,product_id,qty,transaction_type_id,remark,created_at,warehouse_id,lot_id from {$tx}stocks");
+		$result=$db->query("
+		select id,product_id,qty,transaction_type_id,remark,created_at,warehouse_id,lot_id 
+		from {$tx}stocks
+		
+		
+		");
 		$data=[];
 		while($stock=$result->fetch_object()){
 			$data[]=$stock;
 		}
 			return $data;
+	}
+	public static function stock_Report(){
+		global $db,$tx;
+		$result=$db->query("
+		select s.id, s.product_id, p.name ,  sum(s.qty) qty, s.transaction_type_id, s.remark, s.created_at, s.warehouse_id, s.lot_id 
+		from {$tx}stocks s
+		join {$tx}products p
+		on  p.id =s.product_id
+		group by s.product_id
+		");
+		$data=[];
+		while($stock=$result->fetch_object()){
+			$data[]=$stock;
+		}
+		return $data;
 	}
 	public static function pagination($page=1,$perpage=10,$criteria=""){
 		global $db,$tx;
@@ -108,7 +128,13 @@ class Stock extends Model implements JsonSerializable{
 		list($total_rows)=$count_result->fetch_row();
 		$total_pages = ceil($total_rows /$perpage);
 		$top = ($page - 1)*$perpage;
-		$result=$db->query("select id,product_id,qty,transaction_type_id,remark,created_at,warehouse_id,lot_id from {$tx}stocks $criteria limit $top,$perpage");
+		$result=$db->query("
+
+		select id,product_id,qty,transaction_type_id,remark,created_at,warehouse_id,lot_id from {$tx}stocks $criteria limit $top,$perpage
+		");
+
+
+
 		$html="<table class='table'>";
 			$html.="<tr><th colspan='3'>".Html::link(["class"=>"btn btn-success","route"=>"stock/create","text"=>"New Stock"])."</th></tr>";
 		if($action){

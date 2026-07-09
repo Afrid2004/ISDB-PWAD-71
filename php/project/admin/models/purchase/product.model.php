@@ -130,9 +130,9 @@ class Product extends Model implements JsonSerializable{
 	static function html_select($name="cmbProduct"){
 		global $db,$tx;
 		$html="<select class='form-select' id='$name' name='$name'> ";
-		$result =$db->query("select id,name from {$tx}products");
+		$result =$db->query("select id,name, price from {$tx}products");
 		while($product=$result->fetch_object()){
-			$html.="<option  value ='$product->id'>$product->name</option>";
+			$html.="<option data-price='$product->price'  value ='$product->id'>$product->name</option>";
 		}
 		$html.="</select>";
 		return $html;

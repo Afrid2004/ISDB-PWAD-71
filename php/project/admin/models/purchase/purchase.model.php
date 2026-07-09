@@ -75,7 +75,13 @@ class Purchase extends Model implements JsonSerializable{
 	}
 	public static function find($id){
 		global $db,$tx;
-		$result =$db->query("select id,supplier_id,purchase_date,delivery_date,shipping_address,purchase_total,paid_amount,remark,status_id,discount,vat,created_at,updated_at from {$tx}purchases where id='$id'");
+		$result =$db->query("
+		select p.id,p.supplier_id,p.purchase_date,p.delivery_date,p.shipping_address,p.purchase_total,p.paid_amount,p.remark,p.status_id,p.discount,p.vat,p.created_at,p.updated_at,
+		s.name as supplier_name, s.address , s.mobile, s.email
+		from {$tx}purchases p
+		join {$tx}suppliers s
+		on s.id = p.supplier_id
+		where p.id='$id'");
 		$purchase=$result->fetch_object();
 			return $purchase;
 	}

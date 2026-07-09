@@ -124,7 +124,15 @@ public function update($data,$file){
 		redirect();
 	}
 	public function show($id){
-		view("purchase",Purchase::find($id));
+
+       $purchase_data= Purchase::find($id);
+
+	   $purchase_details= PurchaseDetail::find_by_purchase_id($id);
+
+	    // print_r($purchase_details);
+
+
+		view("purchase", compact('purchase_data', 'purchase_details'));
 	}
 }
 ?>

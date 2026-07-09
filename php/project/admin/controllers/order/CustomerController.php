@@ -1,12 +1,12 @@
 <?php
-class TCustomerController extends Controller{
+class CustomerController extends Controller{
 	public function __construct(){
 	}
 	public function index(){
-		view("Travel_Agency");
+		view("order");
 	}
 	public function create(){
-		view("Travel_Agency");
+		view("order");
 	}
 public function save($data,$file){
 	if(isset($data["create"])){
@@ -15,27 +15,29 @@ public function save($data,$file){
 	if(!preg_match("/^[\s\S]+$/",$_POST["txtName"])){
 		$errors["name"]="Invalid name";
 	}
-	if(!preg_match("/^[\s\S]+$/",$_POST["txtPhone"])){
-		$errors["phone"]="Invalid phone";
+	if(!is_valid_mobile($data["mobile"])){
+		$errors["mobile"]="Invalid mobile";
 	}
 	if(!is_valid_email($data["email"])){
 		$errors["email"]="Invalid email";
 	}
-	if(!preg_match("/^[\s\S]+$/",$_POST["txtPassportNo"])){
-		$errors["passport_no"]="Invalid passport_no";
-	}
 	if(!preg_match("/^[\s\S]+$/",$data["address"])){
 		$errors["address"]="Invalid address";
+	}
+	if(!preg_match("/^[\s\S]+$/",$data["photo"])){
+		$errors["photo"]="Invalid photo";
 	}
 
 */
 		if(count($errors)==0){
 			$customer=new Customer();
 		$customer->name=$data["name"];
-		$customer->phone=$data["phone"];
+		$customer->mobile=$data["mobile"];
 		$customer->email=$data["email"];
-		$customer->passport_no=$data["passport_no"];
+		$customer->created_at=$now;
+		$customer->updated_at=$now;
 		$customer->address=$data["address"];
+		$customer->photo=File::upload($file["photo"], "img",$data["id"]);
 
 			$customer->save();
 		redirect();
@@ -45,7 +47,7 @@ public function save($data,$file){
 	}
 }
 public function edit($id){
-		view("Travel_Agency",Customer::find($id));
+		view("order",Customer::find($id));
 }
 public function update($data,$file){
 	if(isset($data["update"])){
@@ -54,17 +56,17 @@ public function update($data,$file){
 	if(!preg_match("/^[\s\S]+$/",$_POST["txtName"])){
 		$errors["name"]="Invalid name";
 	}
-	if(!preg_match("/^[\s\S]+$/",$_POST["txtPhone"])){
-		$errors["phone"]="Invalid phone";
+	if(!is_valid_mobile($data["mobile"])){
+		$errors["mobile"]="Invalid mobile";
 	}
 	if(!is_valid_email($data["email"])){
 		$errors["email"]="Invalid email";
 	}
-	if(!preg_match("/^[\s\S]+$/",$_POST["txtPassportNo"])){
-		$errors["passport_no"]="Invalid passport_no";
-	}
 	if(!preg_match("/^[\s\S]+$/",$data["address"])){
 		$errors["address"]="Invalid address";
+	}
+	if(!preg_match("/^[\s\S]+$/",$data["photo"])){
+		$errors["photo"]="Invalid photo";
 	}
 
 */
@@ -72,10 +74,16 @@ public function update($data,$file){
 			$customer=new Customer();
 			$customer->id=$data["id"];
 		$customer->name=$data["name"];
-		$customer->phone=$data["phone"];
+		$customer->mobile=$data["mobile"];
 		$customer->email=$data["email"];
-		$customer->passport_no=$data["passport_no"];
+		$customer->created_at=$now;
+		$customer->updated_at=$now;
 		$customer->address=$data["address"];
+		if($file["photo"]["name"]!=""){
+			$customer->photo=File::upload($file["photo"], "img",$data["id"]);
+		}else{
+			$customer->photo=Customer::find($data["id"])->photo;
+		}
 
 		$customer->update();
 		redirect();
@@ -85,14 +93,14 @@ public function update($data,$file){
 	}
 }
 	public function confirm($id){
-		view("Travel_Agency");
+		view("order");
 	}
 	public function delete($id){
 		Customer::delete($id);
 		redirect();
 	}
 	public function show($id){
-		view("Travel_Agency",Customer::find($id));
+		view("order",Customer::find($id));
 	}
 }
 ?>

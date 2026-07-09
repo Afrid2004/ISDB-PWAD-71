@@ -45,6 +45,28 @@ class PurchaseDetail extends Model implements JsonSerializable{
 		}
 			return $data;
 	}
+
+
+	public static function find_by_purchase_id($purchase_id){
+		global $db,$tx;
+		$result=$db->query("
+		select pd.id,pd.purchase_id,pd.product_id, pd.qty, pd.price, pd.vat, pd.discount, pro.name as product_name 
+		from {$tx}purchase_details pd
+		join {$tx}products pro
+		on pro.id = pd.product_id 
+		where pd.purchase_id = $purchase_id");
+		$data=[];
+		while($purchasedetail=$result->fetch_object()){
+			$data[]=$purchasedetail;
+		}
+			return $data;
+	}
+
+
+
+
+
+
 	public static function pagination($page=1,$perpage=10,$criteria=""){
 		global $db,$tx;
 		$top=($page-1)*$perpage;
