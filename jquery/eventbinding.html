@@ -2,8 +2,8 @@
 on(): Bind one or more events to elements.
 off(): Remove events bound with .on().
 one(): Bind an event that triggers only once.
-delegate(): Bind events to current or future child elements.
-undelegate(): Remove delegated events.
+delegate(): Bind events to current or future child elements.  //old
+undelegate(): Remove delegated events.                        //old
 bind(): Bind events to elements (legacy method, replaced by .on()).
 unbind(): Remove events bound with .bind() (legacy method).
 Shortcut methods:
@@ -51,11 +51,11 @@ Custom events: Trigger and bind user-defined events -->
   <script>
     $(document).ready(function () {
       /*** 1. on() - Bind event(s) to elements ***/
-      $("#btn-click").on("click", function (e) {
-        //alert("Button clicked using .on() method!");
-        console.log(e);
+      // $("#btn-click").on("click", function (e) {
+      //   //alert("Button clicked using .on() method!");
+      //   console.log(e);
         
-      });
+      // });
 
       // $("#id").on("click", function(){
         
@@ -74,6 +74,7 @@ Custom events: Trigger and bind user-defined events -->
       // // });
 
       // Bind multiple events using .on()
+      
       // $("#btn-hover").on({
       //   mouseenter: function () {
       //     $(this).addClass("highlight");
@@ -90,10 +91,10 @@ Custom events: Trigger and bind user-defined events -->
       // });
 
      
-      // /*** 3. one() - Bind event to trigger only once ***/
-      // $("#btn-once").one("click", function () {
-      //   alert("This button can only be clicked once!");
-      // });
+      /*** 3. one() - Bind event to trigger only once ***/
+      $("#btn-once").one("click", function () {
+        alert("This button can only be clicked once!");
+      });
 
       
 
@@ -147,12 +148,12 @@ Custom events: Trigger and bind user-defined events -->
       //   alert("Button double-clicked!");
       // });
 
-      // /*** 11. focus() - Bind focus event ***/
+      // // /*** 11. focus() - Bind focus event ***/
       // $("#input-box").focus(function () {
       //   console.log("Input box is focused.");
       // });
 
-      // /*** 12. blur() - Bind blur event ***/
+      // // /*** 12. blur() - Bind blur event ***/
       // $("#input-box").blur(function () {
       //   console.log("Input box lost focus.");
       // });

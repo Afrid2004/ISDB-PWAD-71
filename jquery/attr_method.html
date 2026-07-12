@@ -28,7 +28,7 @@ html(): Get or set the HTML content of elements. -->
 </head>
 <body>
   <h1 id="main-title" data-info="Header" data-rakib="Raqeeb" class="header-title">Main Title</h1>
-  <a href="https://example.com" target="_blank" class="external-link">Visit Example</a>
+  <a  href="https://example.com" target="_blank" class="external-link set">Visit Example</a>
   <input type="text" id="name" value="John Doe">
   <button id="btn" disabled>Submit</button>
   <img id="image"  alt="Sample Image">
@@ -40,13 +40,15 @@ html(): Get or set the HTML content of elements. -->
       /*** 1. attr() - Get and set attributes ***/
       // Get an attribute
       // const linkHref = $("a").attr("href","https://google.com");
+
       // console.log("Link href:", linkHref);
 
       // Set an attribute
-      // $("a").attr("title", "Click to visit Example");
+      $("a").attr("title", "Click to visit Example");
 
       //Set multiple attributes
       // $("#image").attr({
+      //   url:"https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=",
       //   width: "400",
       //   height: "300",
       //   src:"img.jpg"
@@ -55,11 +57,11 @@ html(): Get or set the HTML content of elements. -->
 
 
       /*** 2. removeAttr() - Remove an attribute ***/
-     $("#btn").removeAttr("disabled"); // Enables the button
+    //  $("#btn").removeAttr("disabled"); // Enables the button
 
       // /*** 3. prop() - Get and set properties ***/
       // Get a property
-      const isDisabled = $("#btn").prop("disabled", true);
+      // const isDisabled = $("#btn").prop("disabled", false);
       // console.log("Is button disabled:", isDisabled);
 
       // // Set a property
@@ -70,8 +72,10 @@ html(): Get or set the HTML content of elements. -->
 
       // // /*** 5. data() - Get and set data-* attributes ***/
       // // // Get data attribute
-      // const headerData = $("#main-title").data("info");
-      // console.log("Header data-info:", headerData);
+    //   $("#main-title").data("info","setinfo");
+    // let abc=  $("#main-title").data("info");
+
+      // console.log("Header data-info:", abc);
       //  let data_rakib=$("#main-title").data("rakib");
       //  console.log("Header data_rakib:", data_rakib);
       // // Set data attribute
@@ -102,7 +106,11 @@ html(): Get or set the HTML content of elements. -->
       // $("#main-title").removeClass("highlight");
 
       // /*** 10. toggleClass() - Toggle a class ***/
-      // $("#main-title").toggleClass("highlight");
+
+
+            $("#main-title").toggleClass("highlight");
+   
+  
 
       // /*** 11. is() - Check if an element matches a selector ***/
       // const isHidden = $("#container").is(":hidden");
@@ -120,7 +128,7 @@ html(): Get or set the HTML content of elements. -->
 
       // /*** 13. css() - Manipulate inline styles ***/
       // // Get a CSS property
-      // const bgColor = $("#main-title").css("background-color");
+      // const bgColor = $("#main-title").css("background-color" );
       // console.log("Background color:", bgColor);
 
       // // Set a CSS property
@@ -129,7 +137,8 @@ html(): Get or set the HTML content of elements. -->
       // // Set multiple CSS properties
       // $("#main-title").css({
       //   color: "white",
-      //   "font-size": "24px"
+      //   "font-size": "24px",
+      //   "background-color":"red"
       // });
 
       // /*** 14. text() - Get and set the text content of an element ***/
@@ -142,11 +151,11 @@ html(): Get or set the HTML content of elements. -->
 
       // /*** 15. html() - Get and set the HTML content of an element ***/
       // // Get HTML content
-      // const htmlContent = $("#container").html();
-      // console.log("Container HTML content:", htmlContent);
+      const htmlContent = $("#container").html();
+      console.log("Container HTML content:", htmlContent);
 
       // Set HTML content
-      // $("#container").html("<strong>New Content Added!</strong>");
+      $("#container").html("<strong>New Content Added!</strong>");
 
       // const hasAlt = $("#image").attr("alt");
       // console.log("Image has 'alt' attribute:", hasAlt);
