@@ -1,28 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
 import Header from './layout/Header'
 import Footer from './layout/Footer'
 import Sidebar, { Test } from './layout/Sidebar'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Service from './pages/Service';
+import Layout from './layout/Layout';
+
 
 function App() {
-   let myfunction = Test();
-   let a= 10;
-   let b= 20;
   return (
-    <>
-       <br />
-       <Header address={{
-        vill:"borojura", po:"Ishwargonj", dis:"Mymensingh"
-        }}   title="Batch71" name="Rashed" age="25"/>
-       <br /> 
-       <Sidebar/>
-        <br />
-       <Footer/>
 
-    </>
+    <BrowserRouter>
+      <Routes>
+         <Route path='/' element={<Layout/>}>
+           <Route path='/home' element={<Home />} />
+           <Route path='/about' element={<About />} />
+           <Route path='/service' element={<Service />} />
+         </Route>
+        
+      </Routes>
+    </BrowserRouter>
+
+
   )
 }
 

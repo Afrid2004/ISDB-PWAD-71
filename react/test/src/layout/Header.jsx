@@ -1,26 +1,19 @@
+import { Link, NavLink } from "react-router-dom";
+function Header(){
 
-function Header({name, age, title , address:{ vill, po, dis}}){
-// function Header(props){
 return (
  <>
-   This is Header
+   <nav>
 
-   <div>
-      Name:{name}
-   </div>
-   <div>
-      age:{age}
-   </div>
-   <div>
-      Batch:{title}
-   </div>
-   <div>
-      Vill:{vill}
-      <br />
-      dis:{dis}
-      <br />
-      po:{po}
-   </div>
+     <ul>
+        <li><NavLink to="/home">Home</NavLink></li>
+        <li><Link to="/about">about</Link></li>
+        <li><Link to="/service">service</Link></li>
+     </ul>
+
+
+
+   </nav>
  </>
 )}
 
