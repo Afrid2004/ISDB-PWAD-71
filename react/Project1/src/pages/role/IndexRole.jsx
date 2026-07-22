@@ -2,13 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import Spinner from 'react-bootstrap/Spinner';
+import { NavLink } from 'react-router-dom';
 const IndexRole = () => {
  const baseUrl= import.meta.env.VITE_API_BASE_URL;
  const [roles , setRoles] = useState([]);
  const [loading, setLoading] = useState(false)
- const [error, setError] = useState("")
-
-
+ const [error, setError] = useState(false)
  const fetchRoles= async ()=>{
     try {
        setLoading(true);
@@ -18,14 +17,13 @@ const IndexRole = () => {
        setRoles(res.data.roles);
       
     } catch (error) {
-      setError(`${error}`)
-       return error;
+      setError(true)
     }finally{
        setLoading(false);
     }
  } 
   useEffect(()=>{
-   let roles= fetchRoles();
+    fetchRoles();
   }, [])
 
  if (loading) {
@@ -36,12 +34,10 @@ const IndexRole = () => {
     </div>
   );
 }
-
 if (error) {
   return <div className="alert alert-danger">{error}</div>;
 }
-
-  if(!loading && roles.length !== 0){
+  if(!loading  && roles.length !== 0){
  return (
     <>
       <Table striped bordered hover>
@@ -50,17 +46,15 @@ if (error) {
             <th>#</th>
             <th>Name</th>
             <th>Action</th>
-           
           </tr>
         </thead>
         <tbody>
-
          {
            roles.map((role)=>(
             <tr key={role.id}>
             <td>{role.id}</td>
             <td>{role.name}</td>
-            <td>Edit | Delete</td>
+            <td> <NavLink>  </NavLink> | Delete</td>
             </tr>
            ))
          }  
