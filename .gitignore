@@ -1,4 +1,7 @@
 # Logs
 logs
-react/admin*
+react/admin/asset
+react/admin/assets
+react/admin/controllers
+react/admin/views
 react/react.zip
