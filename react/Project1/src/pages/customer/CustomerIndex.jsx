@@ -26,6 +26,28 @@ const CustomerIndex = () => {
    fetchcustomer()
   },[])
 
+
+  function deleteCustomer(id){
+    
+    axios({
+         url:`${baseUrl}/customer/deletefdfs/${id}`,
+         method:"delete",
+         data:{}
+    })
+    .then(res=>{
+        console.log(res.data);
+        fetchcustomer();
+    //    let Mcustomers= customers.filter((c)=> c.id != id)
+    //    setCustomers(Mcustomers);
+    })
+    .catch(err=>{
+        console.log(err);   
+    })
+
+
+
+  }
+
   if(customers.length > 0){
     return (
     <>
@@ -49,7 +71,10 @@ const CustomerIndex = () => {
                 <th>{customer.name}</th>
                 <th>{customer.mobile}</th>
                 <th>{customer.photo}</th>
-                <th> <Link className='btn btn-info' to={`/customer/edit/${customer.id}`}>Edit</Link> | Delete</th>
+                <th> 
+                    <Link className='btn btn-info' to={`/customer/edit/${customer.id}`}>Edit</Link> 
+                    <Link onClick={()=> confirm("are you sure") && deleteCustomer(customer.id)} className='btn btn-danger'>Delete</Link>
+                    </th>
               </tr>
            ))
 
